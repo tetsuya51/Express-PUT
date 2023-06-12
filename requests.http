@@ -1,0 +1,15 @@
+GET http://localhost:5000/api/users
+
+###
+
+PUT http://localhost:5000/api/users/1
+Content-type: application/json
+
+{
+    "id": 1,
+    "firstname": "John",
+    "lastname": "Doe",
+    "email": "john.doe@example.com",
+    "city": "Paris",
+    "language": "English"
+}
