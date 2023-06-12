@@ -13,3 +13,7 @@ Content-type: application/json
     "city": "Paris",
     "language": "English"
 }
+
+###
+
+DELETE http://localhost:5000/api/movies/1
