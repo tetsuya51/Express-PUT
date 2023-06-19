@@ -31,8 +31,14 @@ const getUsersById = (req, res) => {
 };
 
 const postUsers = (req, res) => {
+  const { firstname, lastname, email, city, language, hashedPassword } =
+    req.body;
+
   database
-    .query("select * from users")
+    .query(
+      "INSERT INTO users(firstname, lastname, email, city, language, hashedPassword) VALUES (?, ?, ?, ?, ?, ?)",
+      [firstname, lastname, email, city, language, hashedPassword]
+    )
     .then(([users]) => {
       res.json(users);
     })
