@@ -14,14 +14,20 @@ app.get("/", welcome);
 
 const usersHandlers = require("./usersHandlers");
 const movieHandlers = require("./movieHandlers");
-const { hashPassword } = require("./auth.js");
 
+const { hashPassword, verifyPassword } = require("./auth.js");
 
 app.get("/api/users", usersHandlers.getUsers);
 app.get("/api/users/:id", usersHandlers.getUsersById);
-app.post("/api/users",hashPassword, usersHandlers.postUsers);
-app.put("/api/users/:id",hashPassword, usersHandlers.updateUsers);
+app.post("/api/users", hashPassword, usersHandlers.postUsers);
+app.put("/api/users/:id", hashPassword, usersHandlers.updateUsers);
 app.delete("/api/users/:id", usersHandlers.deleteUser);
+
+app.post(
+  "/api/login",
+  usersHandlers.getUserByEmailWithPasswordAndPassToNext,
+  verifyPassword
+);
 
 app.get("/api/movies", movieHandlers.getMovie);
 app.post("/api/movies", movieHandlers.postMovie);

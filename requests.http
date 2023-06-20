@@ -11,7 +11,33 @@ Content-type: application/json
     "lastname": "Doe",
     "email": "john.doe@example.com",
     "city": "Paris",
-    "language": "English"
+    "language": "English",
+    "hashPassword": "MONmotDEpass123"
+}
+
+###
+
+POST  http://localhost:5000/api/users
+Content-type: application/json
+
+{
+    "id": 1,
+    "firstname": "John",
+    "lastname": "Doe",
+    "email": "john.doe@example.com",
+    "city": "Paris",
+    "language": "English",
+    "hashPassword": "MONmotDEpass456"
+}
+
+###
+
+POST http://localhost:5000/api/login
+Content-Type: application/json
+
+{
+    "email": "Jackie.chan@example.com",
+    "password": "MotDePass,LOL"
 }
 
 ###

@@ -7,7 +7,25 @@ const hashingOptions = {
   parallelism: 1,
 };
 
-const hashPassword = (req, res, next) =>
+const verifyPassword = (req, res) => {
+  argon2
+
+    .verify(req.user.hashedPassword, req.body.password)
+    .then((isVerified) => {
+      if (isVerified) {
+        res.send("Credentials are valid");
+      } else {
+        res.sendStatus(401);
+      }
+    })
+
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
+const hashPassword = (req, res) => {
   argon2
     .hash(req.body.password, hashingOptions)
     .then((hashedPassword) => {
@@ -21,7 +39,9 @@ const hashPassword = (req, res, next) =>
       console.error(err);
       res.status(500).send("Error editing the hased");
     });
+};
 
 module.exports = {
   hashPassword,
+  verifyPassword,
 };
