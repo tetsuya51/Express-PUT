@@ -1,11 +1,32 @@
 const database = require("./database");
 
 const postMovie = (req, res) => {
-  res.send("Post route is working 🎉");
+  const { title, director, year, color, duration } = req.body;
+
+  database
+    .query(
+      "INSERT INTO movies(title, director, year, color, duration) VALUES (?, ?, ?, ?, ?)",
+      [title, director, year, color, duration]
+    )
+    .then(([result]) => {
+      res.status(201).json({ insertId: result.insertId });
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send("Error retrieving data from database");
+    });
 };
 
 const getMovie = (req, res) => {
-  res.send("Get route is working 🎉");
+  database
+    .query("select * from movies")
+    .then(([movies]) => {
+      res.json(movies);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send("Error retrieving data from database");
+    });
 };
 
 const updateMovie = (req, res) => {

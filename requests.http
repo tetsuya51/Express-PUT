@@ -2,6 +2,10 @@ GET http://localhost:5000/api/users
 
 ###
 
+GET http://localhost:5000/api/movies
+
+###
+
 PUT http://localhost:5000/api/users/1
 Content-type: application/json
 
@@ -17,11 +21,25 @@ Content-type: application/json
 
 ###
 
+POST http://localhost:5000/api/movies
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjcsImlhdCI6MTY4NzI1NDQ1MywiZXhwIjoxNjg3MjU4MDUzfQ.H0v2ERRYwmhUKbovsIbgY3Z7JFPP3Waq0d12RKvuztc
+Content-Type: application/json
+
+{
+    "title": "Harry Potter",
+    "director": "JK Rowling",
+    "year": "1999",
+    "color": "1",
+    "duration": 125
+}
+
+###
+
 POST  http://localhost:5000/api/users
 Content-type: application/json
 
 {
-    "id": 1,
+    "id": "",
     "firstname": "John",
     "lastname": "Doe",
     "email": "john.doe@example.com",
