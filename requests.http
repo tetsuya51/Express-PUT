@@ -22,7 +22,7 @@ Content-type: application/json
 ###
 
 POST http://localhost:5000/api/movies
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjcsImlhdCI6MTY4NzI1NDQ1MywiZXhwIjoxNjg3MjU4MDUzfQ.H0v2ERRYwmhUKbovsIbgY3Z7JFPP3Waq0d12RKvuztc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjcsImlhdCI6MTY4NzI1ODEyOCwiZXhwIjoxNjg3MjYxNzI4fQ.PPXmVH46uJv3anZV1nwQpZO2celhBb0Sjy8oRJZtcJY
 Content-Type: application/json
 
 {
@@ -60,4 +60,8 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:5000/api/movies/1
+DELETE http://localhost:5000/api/movies/10
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjcsImlhdCI6MTY4NzI1ODEyOCwiZXhwIjoxNjg3MjYxNzI4fQ.PPXmVH46uJv3anZV1nwQpZO2celhBb0Sjy8oRJZtcJY
+Content-Type: application/json
+
+###

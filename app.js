@@ -19,18 +19,20 @@ const { hashPassword, verifyPassword , verifyToken} = require("./auth.js");
 
 app.get("/api/users", usersHandlers.getUsers);
 app.get("/api/users/:id", usersHandlers.getUsersById);
+app.get("/api/movies", movieHandlers.getMovie);
 app.post("/api/users", hashPassword, usersHandlers.postUsers);
-app.put("/api/users/:id", hashPassword, usersHandlers.updateUsers);
-app.delete("/api/users/:id", usersHandlers.deleteUser);
-
 app.post(
   "/api/login",
   usersHandlers.getUserByEmailWithPasswordAndPassToNext,
   verifyPassword
 );
 
-app.get("/api/movies", movieHandlers.getMovie);
-app.post("/api/movies",verifyToken, movieHandlers.postMovie);
+app.use(verifyToken);
+
+app.put("/api/users/:id", hashPassword, usersHandlers.updateUsers);
+app.delete("/api/users/:id", usersHandlers.deleteUser);
+
+app.post("/api/movies", movieHandlers.postMovie);
 app.put("/api/movies/:id", movieHandlers.updateMovie);
 app.delete("/api/movies/:id", movieHandlers.deleteMovie);
 
